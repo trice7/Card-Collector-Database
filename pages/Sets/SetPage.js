@@ -2,17 +2,8 @@ import { useState, useEffect } from 'react';
 import getAllSets from '../../api/setData';
 import SetCard from '../../components/SetCard';
 
-const initialState = [{
-  data: {
-    images: {
-      symbol: '',
-    },
-    id: 'test',
-  },
-}];
-
 const SetPage = () => {
-  const [icon, setIcon] = useState(initialState);
+  const [icon, setIcon] = useState([]);
 
   useEffect(() => {
     getAllSets().then((data) => {
