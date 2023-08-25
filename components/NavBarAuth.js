@@ -20,8 +20,11 @@ export default function NavBarAuth() {
             <Link passHref href="/">
               <Nav.Link>Home</Nav.Link>
             </Link>
-            <Link passHref href="/">
+            <Link passHref href="/Collections/Collections">
               <Nav.Link>My Collections</Nav.Link>
+            </Link>
+            <Link passHref href="/Collections/new">
+              <Nav.Link>Create a Collection</Nav.Link>
             </Link>
             <Link passHref href="/Sets/SetPage">
               <Nav.Link>View Sets</Nav.Link>
