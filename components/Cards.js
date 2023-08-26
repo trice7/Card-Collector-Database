@@ -1,10 +1,12 @@
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-// import { getSingleCollection } from '../api/collectionData';
-import { getCollectionCards } from '../api/cardData';
+import { getSingleCollection } from '../api/collectionData';
+import { deleteCollectionCard, getCollectionCards } from '../api/cardData';
+import CardModal from './forms/CardModal';
 
 const Cards = ({ card, collectionId }) => {
+  const [collectionCard, setCollectionCard] = useState();
   const [collection, setCollection] = useState();
 
   useEffect(() => {
@@ -12,10 +14,17 @@ const Cards = ({ card, collectionId }) => {
       getCollectionCards(collectionId).then((data) => {
         const theCardArr = data.filter((item) => item.cardId === card.id);
         const theCard = theCardArr[0];
-        setCollection(theCard);
+        setCollectionCard(theCard);
+        getSingleCollection(theCard.collectionId).then(setCollection);
       });
     }
   }, [collectionId, card]);
+
+  const deleteCard = () => {
+    if (window.confirm(`Delete all ${card.name} cards from ${collection.name}?`)) {
+      deleteCollectionCard(collection.firebaseKey).then();
+    }
+  };
 
   return (
     <Card style={{ width: '18rem' }}>
@@ -25,7 +34,8 @@ const Cards = ({ card, collectionId }) => {
         <Card.Text>
           {collection?.quantity}
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        {collectionId ? (<CardModal obj={card} edit={collectionId} selectedCard={collectionCard} />) : (<CardModal obj={card} />)}
+        {collectionId ? (<Button variant="danger" onClick={deleteCard}>Remove Card</Button>) : ''}
       </Card.Body>
     </Card>
   );

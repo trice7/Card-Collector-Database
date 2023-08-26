@@ -1,9 +1,14 @@
 import { Card, Button } from 'react-bootstrap';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import { deleteCollectionAndCards } from '../api/collectionData';
 
 const CollectionCard = ({ obj }) => {
-  console.warn('collection card');
+  const deleteThisCollection = () => {
+    if (window.confirm(`Delete ${obj.name}? This will also remove all cards from this collection. This is irreversible`)) {
+      deleteCollectionAndCards(obj.firebaseKey).then();
+    }
+  };
 
   return (
     <Card style={{ width: '18rem' }}>
@@ -18,6 +23,7 @@ const CollectionCard = ({ obj }) => {
         <Link href={`/Collections/edit/${obj.firebaseKey}`} passHref>
           <Button>Edit Collection</Button>
         </Link>
+        <Button variant="danger" onClick={deleteThisCollection}>Delete Collection</Button>
       </Card.Body>
     </Card>
   );

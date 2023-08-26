@@ -39,8 +39,49 @@ const getCollectionCards = (collectionId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const createCollectionCard = (payload) => new Promise((resolve, reject) => {
+  fetch(`${fbEndpoint}/collectionCards.json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const updateCollectionCard = (payload) => new Promise((resolve, reject) => {
+  fetch(`${fbEndpoint}/collectionCards/${payload.firebaseKey}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application.json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const deleteCollectionCard = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${fbEndpoint}/collectionCards/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
   getCard,
   getSetCards,
   getCollectionCards,
+  createCollectionCard,
+  updateCollectionCard,
+  deleteCollectionCard,
 };
