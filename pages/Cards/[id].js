@@ -12,7 +12,7 @@ const SetCards = () => {
     getSetCards(id).then((data) => {
       setCards(data[0]);
     });
-  });
+  }, [id]);
   console.warn(cards);
   return (
     <div>

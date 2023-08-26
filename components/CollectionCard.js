@@ -10,7 +10,10 @@ const CollectionCard = ({ obj }) => {
       <Card.Img variant="top" src={obj.img} />
       <Card.Body>
         <Card.Title>{obj.name}</Card.Title>
-        <Button variant="primary">View Collection</Button>
+
+        <Link href={`/Collections/${obj.firebaseKey}`} passHref>
+          <Button variant="primary">View Collection</Button>
+        </Link>
 
         <Link href={`/Collections/edit/${obj.firebaseKey}`} passHref>
           <Button>Edit Collection</Button>
