@@ -1,4 +1,5 @@
 import { clientCredentials } from '../utils/client';
+import { deleteCollectionCard } from './cardData';
 
 const endpoint = clientCredentials.databaseURL;
 
@@ -64,10 +65,33 @@ const updateCollection = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getCollectionsCards = (collectionId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/collectionCards.json?orderBy="collectionId"&equalTo="${collectionId}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
+const deleteCollectionAndCards = (collectionId) => new Promise((resolve, reject) => {
+  getCollectionsCards(collectionId).then((cardArr) => {
+    const deleteCardPromises = cardArr.map((card) => deleteCollectionCard(card.firebaseKey));
+
+    Promise.all(deleteCardPromises).then(() => {
+      deleteCollection(collectionId).then(resolve);
+    });
+  }).catch((error) => reject(error));
+});
+
 export {
   getUserCollections,
   deleteCollection,
   getSingleCollection,
   createCollection,
   updateCollection,
+  deleteCollectionAndCards,
 };
