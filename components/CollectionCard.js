@@ -3,10 +3,10 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { deleteCollectionAndCards } from '../api/collectionData';
 
-const CollectionCard = ({ obj }) => {
+const CollectionCard = ({ obj, onUpdate }) => {
   const deleteThisCollection = () => {
     if (window.confirm(`Delete ${obj.name}? This will also remove all cards from this collection. This is irreversible`)) {
-      deleteCollectionAndCards(obj.firebaseKey).then();
+      deleteCollectionAndCards(obj.firebaseKey).then(onUpdate);
     }
   };
 
@@ -36,6 +36,7 @@ CollectionCard.propTypes = {
     isPrivate: PropTypes.bool,
     firebaseKey: PropTypes.string,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 export default CollectionCard;
