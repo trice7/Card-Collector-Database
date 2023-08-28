@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getCard, getCollectionCards } from '../../api/cardData';
@@ -8,21 +9,26 @@ const CollectionCards = () => {
   const router = useRouter();
   const { firebaseKey } = router.query;
 
-  useEffect(() => {
+  const getCollectionContents = () => {
     getCollectionCards(firebaseKey).then((data) => {
+      setCollection([]);
       data.forEach((obj) => {
         getCard(obj.cardId).then((item) => {
           setCollection((prevState) => [...prevState, item.data]);
         });
       });
     });
-  }, [firebaseKey]);
+  };
+
+  useEffect(() => {
+    getCollectionContents();
+  }, []);
 
   // console.warn(cards);
   return (
     <>
       {collection.map((obj) => (
-        <Cards key={obj.id} card={obj} collectionId={firebaseKey} />
+        <Cards key={obj.id} card={obj} collectionId={firebaseKey} onUpdate={getCollectionContents} />
       ))}
     </>
   );

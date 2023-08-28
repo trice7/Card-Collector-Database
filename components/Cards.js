@@ -1,3 +1,4 @@
+// import { useRouter } from 'next/router';
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
@@ -5,9 +6,10 @@ import { getSingleCollection } from '../api/collectionData';
 import { deleteCollectionCard, getCollectionCards } from '../api/cardData';
 import CardModal from './forms/CardModal';
 
-const Cards = ({ card, collectionId }) => {
+const Cards = ({ card, collectionId, onUpdate }) => {
   const [collectionCard, setCollectionCard] = useState();
   const [collection, setCollection] = useState();
+  // const router = useRouter();
 
   useEffect(() => {
     if (collectionId) {
@@ -22,7 +24,7 @@ const Cards = ({ card, collectionId }) => {
 
   const deleteCard = () => {
     if (window.confirm(`Delete all ${card.name} cards from ${collection.name}?`)) {
-      deleteCollectionCard(collection.firebaseKey).then();
+      deleteCollectionCard(collectionCard.firebaseKey).then(onUpdate);
     }
   };
 
@@ -52,6 +54,7 @@ Cards.propTypes = {
   collectionId: PropTypes.shape({
     firebaseKey: PropTypes.string,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 export default Cards;
