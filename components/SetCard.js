@@ -1,4 +1,3 @@
-// import { Image } from 'react-bootstrap';
 import { Card, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Link from 'next/link';

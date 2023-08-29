@@ -2,8 +2,11 @@ import { Card, Button } from 'react-bootstrap';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { deleteCollectionAndCards } from '../api/collectionData';
+import { useAuth } from '../utils/context/authContext';
 
 const CollectionCard = ({ obj, onUpdate }) => {
+  const { user } = useAuth();
+
   const deleteThisCollection = () => {
     if (window.confirm(`Delete ${obj.name}? This will also remove all cards from this collection. This is irreversible`)) {
       deleteCollectionAndCards(obj.firebaseKey).then(onUpdate);
@@ -20,10 +23,12 @@ const CollectionCard = ({ obj, onUpdate }) => {
           <Button variant="primary">View Collection</Button>
         </Link>
 
-        <Link href={`/Collections/edit/${obj.firebaseKey}`} passHref>
-          <Button>Edit Collection</Button>
-        </Link>
-        <Button variant="danger" onClick={deleteThisCollection}>Delete Collection</Button>
+        {obj.uid === user.uid ? (
+          <Link href={`/Collections/edit/${obj.firebaseKey}`} passHref>
+            <Button>Edit Collection</Button>
+          </Link>
+        ) : ''}
+        {obj.uid === user.uid ? (<Button variant="danger" onClick={deleteThisCollection}>Delete Collection</Button>) : ''}
       </Card.Body>
     </Card>
   );
@@ -35,6 +40,7 @@ CollectionCard.propTypes = {
     name: PropTypes.string,
     isPrivate: PropTypes.bool,
     firebaseKey: PropTypes.string,
+    uid: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

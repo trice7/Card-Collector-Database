@@ -15,6 +15,18 @@ const getUserCollections = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getPublicCollections = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/collections.json?orderBy="isPrivate"&equalTo=${false}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 const deleteCollection = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/collections/${firebaseKey}.json`, {
     method: 'DELETE',
@@ -89,6 +101,7 @@ const deleteCollectionAndCards = (collectionId) => new Promise((resolve, reject)
 
 export {
   getUserCollections,
+  getPublicCollections,
   deleteCollection,
   getSingleCollection,
   createCollection,
