@@ -5,10 +5,12 @@ import { useEffect, useState } from 'react';
 import { getSingleCollection } from '../api/collectionData';
 import { deleteCollectionCard, getCollectionCards } from '../api/cardData';
 import CardModal from './forms/CardModal';
+import { useAuth } from '../utils/context/authContext';
 
 const Cards = ({ card, collectionId, onUpdate }) => {
   const [collectionCard, setCollectionCard] = useState();
   const [collection, setCollection] = useState();
+  const { user } = useAuth();
   // const router = useRouter();
 
   useEffect(() => {
@@ -27,6 +29,7 @@ const Cards = ({ card, collectionId, onUpdate }) => {
       deleteCollectionCard(collectionCard.firebaseKey).then(onUpdate);
     }
   };
+  console.warn(collection?.uid);
 
   return (
     <Card style={{ width: '18rem' }}>
@@ -36,8 +39,8 @@ const Cards = ({ card, collectionId, onUpdate }) => {
         <Card.Text>
           {collection?.quantity}
         </Card.Text>
-        {collectionId ? (<CardModal obj={card} edit={collectionId} selectedCard={collectionCard} />) : (<CardModal obj={card} />)}
-        {collectionId ? (<Button variant="danger" onClick={deleteCard}>Remove Card</Button>) : ''}
+        {collectionId && collection?.uid === user.uid ? (<CardModal obj={card} edit={collectionId} selectedCard={collectionCard} />) : (<CardModal obj={card} />)}
+        {collectionId && collection?.uid === user.uid ? (<Button variant="danger" onClick={deleteCard}>Remove Card</Button>) : ''}
       </Card.Body>
     </Card>
   );
