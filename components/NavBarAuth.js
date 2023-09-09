@@ -32,6 +32,9 @@ export default function NavBarAuth() {
             <Link passHref href="/Collections/Community">
               <Nav.Link>Community</Nav.Link>
             </Link>
+            <Link passHref href="/CardSearch">
+              <Nav.Link>Search Cards</Nav.Link>
+            </Link>
             <Button variant="danger" onClick={signOut}>Sign Out</Button>
           </Nav>
         </Navbar.Collapse>

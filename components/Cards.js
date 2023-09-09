@@ -29,7 +29,6 @@ const Cards = ({ card, collectionId, onUpdate }) => {
       deleteCollectionCard(collectionCard.firebaseKey).then(onUpdate);
     }
   };
-  console.warn(collection?.uid);
 
   return (
     <Card style={{ width: '18rem' }}>
