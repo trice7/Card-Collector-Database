@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-boolean-value */
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { FloatingLabel, Form, Button } from 'react-bootstrap';

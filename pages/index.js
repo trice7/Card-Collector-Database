@@ -1,3 +1,4 @@
+import LandingArea from '../components/LandingArea';
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
@@ -14,6 +15,7 @@ function Home() {
       }}
     >
       <h1>Hello {user.displayName}! </h1>
+      <LandingArea />
     </div>
   );
 }

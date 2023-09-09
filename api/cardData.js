@@ -15,6 +15,18 @@ const getCard = (cardId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getCardDex = (dexId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}?q=nationalPokedexNumbers:${dexId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 const getSetCards = (setId) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/?q=set.id:${setId}`, {
     method: 'GET',
@@ -84,4 +96,5 @@ export {
   createCollectionCard,
   updateCollectionCard,
   deleteCollectionCard,
+  getCardDex,
 };

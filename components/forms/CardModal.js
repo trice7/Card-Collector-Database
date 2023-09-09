@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { getUserCollections } from '../../api/collectionData';
 import { useAuth } from '../../utils/context/authContext';
 import { createCollectionCard, updateCollectionCard } from '../../api/cardData';
+import CardData from '../CardData';
 
 const initialState = {
   cardId: '',
@@ -79,9 +80,9 @@ const CardModal = ({ obj, edit, selectedCard }) => {
                 <Card.Img variant="top" src={obj.images?.small} />
               </Card>
             </div>
-            {/* <div className="card-modal-body">
-              <p>Empty Data Placeholder</p>
-            </div> */}
+            <div>
+              <CardData obj={obj} />
+            </div>
           </div>
           <Form>
             <FloatingLabel controlId="floatingSelect" label="Add Card to Collection">

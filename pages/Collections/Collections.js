@@ -7,7 +7,7 @@ import CollectionCard from '../../components/CollectionCard';
 const Collections = () => {
   const [myCollections, setMyCollections] = useState([]);
   const { user } = useAuth();
-  console.warn('testing');
+
   const displayCollections = () => {
     getUserCollections(user.uid).then(setMyCollections);
   };
