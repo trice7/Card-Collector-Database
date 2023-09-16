@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Navbar, Container, Nav, Button,
 } from 'react-bootstrap';
@@ -11,7 +12,15 @@ export default function NavBarAuth() {
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Link passHref href="/">
-          <Navbar.Brand>CCDB</Navbar.Brand>
+          <Navbar.Brand>
+            <Image
+              src="/CCDBLogo.jpg"
+              width={20}
+              height={20}
+              className="d-inline-block align-top"
+              alt="CCDB Logo"
+            />
+          </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

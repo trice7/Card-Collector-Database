@@ -27,6 +27,18 @@ const getCardDex = (dexId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getCardSearch = (result) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}?q=name:${result}*`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 const getSetCards = (setId) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/?q=set.id:${setId}`, {
     method: 'GET',
@@ -97,4 +109,5 @@ export {
   updateCollectionCard,
   deleteCollectionCard,
   getCardDex,
+  getCardSearch,
 };

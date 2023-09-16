@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import Link from 'next/link';
 import pokedex from '../api/PokedexData';
+import NameSearch from '../components/NameSearch';
 
 const CardSearch = () => {
   const [dex, setDex] = useState([]);
@@ -27,6 +28,8 @@ const CardSearch = () => {
           ))}
         </Dropdown.Menu>
       </Dropdown>
+
+      <NameSearch />
     </div>
   );
 };
