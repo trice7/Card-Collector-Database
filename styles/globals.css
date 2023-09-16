@@ -24,3 +24,7 @@ body {
 .modal-body-container {
   display: flex;
 }
+
+.name-search {
+  width: 30%;
+}
