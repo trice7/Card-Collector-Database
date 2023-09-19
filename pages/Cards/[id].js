@@ -22,7 +22,7 @@ const SetCards = () => {
       <div>
         <StatBoard uniqueCards={uniqueCards} setInit={cards} />
       </div>
-      <div>
+      <div className="card-container">
         {cards.map((obj) => (
           <Cards key={obj.id} card={obj} />
         ))}

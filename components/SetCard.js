@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 
 const SetCard = ({ obj }) => (
-  <Card style={{ width: '18rem' }}>
+  <Card className="card" style={{ width: '18rem' }}>
     <Card.Img variant="top" src={obj.images?.logo} />
     <Card.Body>
       <Card.Title>{obj.name}</Card.Title>

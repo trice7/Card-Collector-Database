@@ -44,7 +44,7 @@ const CollectionCards = () => {
       <div>
         <StatBoard cardSum={cardSum} uniqueCards={uniqueCards} />
       </div>
-      <div>
+      <div className="card-container">
         {collection.map((obj) => (
           <Cards key={obj.id} card={obj} collectionId={firebaseKey} onUpdate={getCollectionContents} />
         ))}

@@ -31,7 +31,7 @@ const Cards = ({ card, collectionId, onUpdate }) => {
   };
 
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card className="card" style={{ width: '18rem' }}>
       <Card.Img variant="top" src={card.images?.small} />
       <Card.Body>
         <Card.Title>{card.name}</Card.Title>
