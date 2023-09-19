@@ -38,7 +38,6 @@ const CardModal = ({ obj, edit, selectedCard }) => {
       ...prevState,
       [name]: value,
     }));
-    console.warn(formInput);
   };
 
   const handleSubmit = (e) => {
