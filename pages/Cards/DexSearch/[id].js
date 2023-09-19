@@ -12,7 +12,6 @@ const DisplayByDexNumber = () => {
       setChar(data[0]);
     });
   }, [id]);
-  console.warn(char);
 
   return (
     <div>

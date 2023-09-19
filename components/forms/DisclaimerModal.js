@@ -6,9 +6,7 @@ const DisclamierModal = () => {
 
   const handleClose = setShow(false);
   const handleShow = () => setShow(true);
-  console.warn('DisclamierModal');
   useEffect(() => {
-    console.warn('model useEffect');
   }, []);
 
   return (

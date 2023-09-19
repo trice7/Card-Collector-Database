@@ -39,8 +39,6 @@ const CollectionCards = () => {
     getCardSum();
   }, []);
 
-  // console.warn(`cardSum is ${cardSum} and uniqueCards is ${uniqueCards}`);
-
   return (
     <div>
       <div>

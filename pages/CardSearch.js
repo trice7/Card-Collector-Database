@@ -6,7 +6,6 @@ import NameSearch from '../components/NameSearch';
 
 const CardSearch = () => {
   const [dex, setDex] = useState([]);
-  console.warn(dex);
 
   useEffect(() => {
     pokedex().then(setDex);

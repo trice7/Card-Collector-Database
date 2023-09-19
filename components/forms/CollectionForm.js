@@ -29,8 +29,6 @@ const CollectionForm = ({ obj }) => {
     return value;
   };
 
-  console.warn(obj);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormInput((prevState) => ({
@@ -40,17 +38,14 @@ const CollectionForm = ({ obj }) => {
   };
 
   const handleRadioChange = (e) => {
-    // console.warn(boolConversion(e.target.value));
     const bool = boolConversion(e.target.value);
     // boolConversion(e.target.value);
-    console.warn(bool);
     setFormInput((prevState) => ({
       ...prevState,
       isPrivate: bool,
     }));
   };
 
-  // TODO: refactor for update functionality
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {

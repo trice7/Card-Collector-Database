@@ -13,7 +13,6 @@ const PublicCollections = () => {
   useEffect(() => {
     displayCollections();
   }, []);
-  console.warn(collections);
 
   return (
     <div>

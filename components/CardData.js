@@ -2,7 +2,6 @@ import Table from 'react-bootstrap/Table';
 import PropTypes from 'prop-types';
 
 const CardData = ({ obj }) => {
-  console.warn('on card page');
   const priceKeys = Object.keys(obj?.tcgplayer.prices);
   return (
     <>
