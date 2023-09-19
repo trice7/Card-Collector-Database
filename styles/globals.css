@@ -18,7 +18,7 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: #D3D3D3;
 }
 
 .modal-body-container {
@@ -28,3 +28,50 @@ body {
 .name-search {
   width: 30%;
 }
+
+/* *******************
+**** Card Styling ****
+******************* */
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  margin-top: 15px;
+}
+
+/* Smartphones (portrait and landscape) to center a single card on the page ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .card-container {
+    justify-content: space-around;
+  }
+}
+
+/* *******************
+**** Card Styling ****
+******************* */
+
+/* ********************
+**** Modal Styling ****
+******************** */
+
+/* Modal mobile breakpoint width: 515px */
+
+.pricing-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.modal-body-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* ********************
+**** Modal Styling ****
+******************** */

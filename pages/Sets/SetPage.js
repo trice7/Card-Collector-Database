@@ -12,7 +12,7 @@ const SetPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="card-container">
       {icon.map((set) => (
         <SetCard key={set.id} obj={set} />
       ))}

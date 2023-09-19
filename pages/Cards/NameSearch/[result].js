@@ -21,7 +21,7 @@ const SearchResults = () => {
       <div>
         <StatBoard results={resultNum} />
       </div>
-      <div>
+      <div className="card-container">
         {cards.length > 0 ? cards.map((obj) => (
           <Cards key={obj.id} card={obj} />
         )) : (<p>No cards found</p>)}
