@@ -7,10 +7,12 @@ const StatBoard = ({
   setInit,
   results,
 }) => (
-  <div>
-    {results ? (<p>Cards found: {results}</p>) : ''}
-    {setInit || results ? '' : (<p>Total cards in this collection: {cardSum}</p>)}
-    {results ? '' : (<p>Unique cards in this {setInit ? 'set' : 'collection'}: {uniqueCards}</p>)}
+  <div className="poke-border">
+    <div className="stat-container">
+      {results ? (<p>Cards found: {results}</p>) : ''}
+      {setInit || results ? '' : (<p>Total cards in this collection: {cardSum}</p>)}
+      {results ? '' : (<p>Unique cards in this {setInit ? 'set' : 'collection'}: {uniqueCards}</p>)}
+    </div>
   </div>
 );
 

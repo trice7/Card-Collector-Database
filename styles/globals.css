@@ -18,7 +18,10 @@ a {
 }
 
 body {
-  background-color: #D3D3D3;
+  /* background-color: #D3D3D3; */
+  background-image: url("/pokeball-background.jpg");
+  background-repeat: repeat;
+  background-size: 40%;
 }
 
 .modal-body-container {
@@ -75,3 +78,46 @@ body {
 /* ********************
 **** Modal Styling ****
 ******************** */
+
+/* **************
+**** Borders ****
+************** */
+
+.poke-border {
+  border: 20px solid transparent;
+  
+  border-image-source: url("/pokeball-border.png");
+  border-image-repeat: stretch;
+  border-image-slice: 300;
+  border-radius: 10px;
+  margin-top: 25px;
+  
+  .stat-container {
+    background-color: #D3D3D3;
+    margin: -5px;
+    margin-bottom: -5px;
+    border-radius: 10px;
+    padding: 5px;
+  }
+  .collection-form{
+    background-color: #D3D3D3;
+    margin: -5px;
+    margin-bottom: -5px;
+    border-radius: 10px;
+    padding: 5px;
+  }
+}
+
+.landing {
+  background-color: #D3D3D3;
+  margin: -5px;
+  margin-bottom: -5px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+
+
+/* **************
+**** Borders ****
+************** */

@@ -62,65 +62,67 @@ const CollectionForm = ({ obj }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <div className="poke-border">
+      <Form onSubmit={handleSubmit} className="collection-form">
 
-      <h2>Create Collection</h2>
+        <h2>Create Collection</h2>
 
-      <FloatingLabel controlId="" label="" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Collection Name"
-          name="name"
-          value={formInput.name}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-
-      <FloatingLabel controlId="" label="" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Upload Image"
-          name="img"
-          value={formInput.img}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-
-      <FloatingLabel controlId="" label="" className="mb-3">
-        {/* <Form.Check
-          type="switch"
-          id="custom-switch"
-          label="Make Collection Private"
-          name="isPrivate"
-          onChange={handleChange}
-        /> */}
-
-        <div className="mb-3" onChange={handleRadioChange} required>
-          <Form.Check
-            type="radio"
-            id="privacy-radio1"
-            for="privacy-radio"
-            label="Private"
-            name="isPrivate"
-            value="true"
+        <FloatingLabel controlId="" label="" className="mb-3">
+          <Form.Control
+            type="text"
+            placeholder="Collection Name"
+            name="name"
+            value={formInput.name}
+            onChange={handleChange}
+            required
           />
+        </FloatingLabel>
 
-          <Form.Check
-            type="radio"
-            id="privacy-radio2"
-            for="privacy-radio"
-            label="Public"
-            name="isPrivate"
-            value="false"
+        <FloatingLabel controlId="" label="" className="mb-3">
+          <Form.Control
+            type="text"
+            placeholder="Upload Image"
+            name="img"
+            value={formInput.img}
+            onChange={handleChange}
+            required
           />
-        </div>
-      </FloatingLabel>
+        </FloatingLabel>
 
-      <Button type="submit">Create Collection</Button>
+        <FloatingLabel controlId="" label="" className="mb-3">
+          {/* <Form.Check
+            type="switch"
+            id="custom-switch"
+            label="Make Collection Private"
+            name="isPrivate"
+            onChange={handleChange}
+          /> */}
 
-    </Form>
+          <div className="mb-3" onChange={handleRadioChange} required>
+            <Form.Check
+              type="radio"
+              id="privacy-radio1"
+              for="privacy-radio"
+              label="Private"
+              name="isPrivate"
+              value="true"
+            />
+
+            <Form.Check
+              type="radio"
+              id="privacy-radio2"
+              for="privacy-radio"
+              label="Public"
+              name="isPrivate"
+              value="false"
+            />
+          </div>
+        </FloatingLabel>
+
+        <Button type="submit">Create Collection</Button>
+
+      </Form>
+    </div>
   );
 };
 
