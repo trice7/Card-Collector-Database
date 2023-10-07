@@ -1,6 +1,7 @@
 # Card Collectors Database
 
-
+Welcome to the Card Collectors Database! You can access my website at the following link: https://ccdb-trice.netlify.app/
+![CCDBLogo](https://github.com/trice7/Card-Collector-Database/assets/124416375/a48fd88b-c4c4-429b-8311-e7f2e4aa2462)
 
 ![image](https://github.com/trice7/Card-Collector-Database/assets/124416375/f926b5d8-43aa-4a2f-bb41-7cfeec7621c4)
 ![image](https://github.com/trice7/Card-Collector-Database/assets/124416375/b1d7da8a-0328-41f4-b20e-e406fa203405)
