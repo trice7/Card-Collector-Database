@@ -29,7 +29,11 @@ body {
 }
 
 .name-search {
-  width: 30%;
+  margin-top: 3%;
+}
+
+.sign-in {
+  background-color: #D3D3D3;
 }
 
 /* *******************
@@ -53,6 +57,19 @@ body {
     justify-content: space-around;
   }
 }
+
+/* .header-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.add-del {
+  margin-left: 47%;
+} */
+
+/* .view-btn {
+  margin-top: 20%;
+} */
 
 /* *******************
 **** Card Styling ****

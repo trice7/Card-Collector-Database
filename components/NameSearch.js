@@ -19,7 +19,7 @@ const NameSearch = () => {
   return (
     <div>
       <Form onSubmit={handleSubmit}>
-        <Form.Control size="sm" type="text" placeholder="Search..." className="mb-3 name-search" onChange={handleChange} value={result} />
+        <Form.Control size="sm" type="text" placeholder="Search..." className="mr-sm-2 name-search" onChange={handleChange} value={result} />
       </Form>
     </div>
   );

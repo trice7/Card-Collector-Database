@@ -3,10 +3,11 @@ import { Card, FloatingLabel, Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import PropTypes from 'prop-types';
-import { getUserCollections } from '../../api/collectionData';
+import { getSingleCollection, getUserCollections } from '../../api/collectionData';
 import { useAuth } from '../../utils/context/authContext';
 import { createCollectionCard, updateCollectionCard } from '../../api/cardData';
 import CardData from '../CardData';
+import PokeIcon from '../PokeIcon';
 
 const initialState = {
   cardId: '',
@@ -14,10 +15,16 @@ const initialState = {
   quantity: 1,
 };
 
-const CardModal = ({ obj, edit, selectedCard }) => {
+const CardModal = ({
+  obj,
+  edit,
+  selectedCard,
+  onUpdate,
+}) => {
   const [show, setShow] = useState(false);
   const [collections, setCollections] = useState([]);
   const [formInput, setFormInput] = useState(initialState);
+  const [myCollection, setMyCollection] = useState('');
 
   const handleClose = () => {
     setFormInput(initialState);
@@ -29,7 +36,10 @@ const CardModal = ({ obj, edit, selectedCard }) => {
   useEffect(() => {
     getUserCollections(user.uid).then(setCollections);
 
-    if (selectedCard.firebaseKey) setFormInput(selectedCard);
+    if (selectedCard.firebaseKey) {
+      setFormInput(selectedCard);
+      getSingleCollection(selectedCard.collectionId).then(setMyCollection);
+    }
   }, [user, selectedCard]);
 
   const handleChange = (e) => {
@@ -44,6 +54,7 @@ const CardModal = ({ obj, edit, selectedCard }) => {
     e.preventDefault();
     if (edit) {
       updateCollectionCard(formInput).then(handleClose);
+      onUpdate();
     } else {
       const payload = { ...formInput, uid: user.uid, cardId: obj.id };
       createCollectionCard(payload).then(({ name }) => {
@@ -55,10 +66,8 @@ const CardModal = ({ obj, edit, selectedCard }) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        View Card
-      </Button>
 
+      <PokeIcon type="button" className="view-btn" handleShow={handleShow} />
       <Modal
         show={show}
         onHide={handleClose}
@@ -92,7 +101,7 @@ const CardModal = ({ obj, edit, selectedCard }) => {
                 className="mb-3"
                 required
               >
-                <option value="">Select a collection</option>
+                <option value={myCollection.firebaseKey}>{myCollection ? myCollection.name : 'Please select a collection'}</option>
                 {
                   collections.map((item) => (
                     <option
@@ -141,12 +150,15 @@ CardModal.propTypes = {
   }),
   selectedCard: PropTypes.shape({
     firebaseKey: PropTypes.string,
+    collectionId: PropTypes.string,
   }),
+  onUpdate: PropTypes.func,
 };
 
 CardModal.defaultProps = {
   edit: '',
   selectedCard: '',
+  onUpdate: '',
 };
 
 export default CardModal;
