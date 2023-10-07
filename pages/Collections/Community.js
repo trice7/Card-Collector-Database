@@ -15,7 +15,7 @@ const PublicCollections = () => {
   }, []);
 
   return (
-    <div>
+    <div className="card-container">
       {collections.map((obj) => (
         <CollectionCard key={obj.firebaseKey} obj={obj} onUpdate={displayCollections} />
       ))}
